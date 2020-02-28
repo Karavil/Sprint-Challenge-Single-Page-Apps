@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: By using client-side routing, we don't have to make a request to the server each time the user requests a new page/component. Instead, all of these components are loaded by JavaScript the first time the user opens our web page.
 
 ## Project Set Up
 

@@ -1,16 +1,41 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styled from 'styled-components';
+import CharacterCard from "./CharacterCard";
 
-export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+const List = styled.section`
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+`
 
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+export default function CharacterList(props) {
+   const [characters, setCharacters] = useState([]);
 
-  return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
-  );
+   const searchFilter = props.searchFilter || "";
+   const page = props.page || 1;
+
+   useEffect(() => {
+      axios
+         .get(
+            `https://cors-anywhere.herokuapp.com/https://rickandmortyapi.com/api/character/?page=${page}`
+         )
+         .then(function(response) {
+            const characters = response.data.results;
+            setCharacters(characters);
+            console.log('Got character data.');
+         })
+         .catch(function(error) {
+            // handle error
+            console.log(error);
+         })
+   }, [page]);
+
+   console.log(characters);
+   const characterCards = characters
+      .filter(character => character.name.toLowerCase().includes(searchFilter.toLowerCase()))
+      .map(character => <CharacterCard character={character} />);
+
+   return <List>{characterCards}</List>;
 }

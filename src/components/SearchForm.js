@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
 
-export default function SearchForm() {
+const SearchInput = styled.input`
+   width: 100%;
+   margin: 0;
+   height: 3rem;
+   font-size: 1.5rem;
+   padding: 0.5rem 1rem;
+`
+export default function SearchForm(props) {
  
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <SearchInput placeholder="Filter characters..." onChange={(event) => props.setSearchFilter(event.target.value)}/>
   );
 }
