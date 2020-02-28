@@ -9,9 +9,8 @@ export default function App() {
    return (
       <main>
          <Header />
-         <WelcomePage />
-         <SearchForm />
-         <CharacterList filterBy={searchFilter} />
+         <SearchForm setSearchFilter={setSearchFilter}/>
+         <CharacterList searchFilter={searchFilter} />
       </main>
    );
 }

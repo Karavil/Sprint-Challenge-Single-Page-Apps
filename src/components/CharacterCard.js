@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-   width: 40%;
+   width: 32%;
    padding: 20px 20px;
    border-radius: 10px;
 
@@ -27,6 +27,10 @@ const Card = styled.div`
       color: darkgrey;
    }
 `;
+
+const AliveOrOther = styled.h2`
+color: ${props => console.log()}
+`
 
 const CharacterImg = styled.img`
    border-radius: 50%;

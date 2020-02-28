@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styled from 'styled-components';
 import CharacterCard from "./CharacterCard";
+
+const List = styled.section`
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+`
 
 export default function CharacterList(props) {
    const [characters, setCharacters] = useState();
@@ -549,7 +557,7 @@ export default function CharacterList(props) {
       }
    ];
 
-   const searchFilter = props.searchFilter || "rick";
+   const searchFilter = props.searchFilter || "";
    const page = props.page || 1;
 
    useEffect(() => {
@@ -576,5 +584,5 @@ export default function CharacterList(props) {
       .map(character => <CharacterCard character={character} />);
    console.log("filtered", characterCards);
 
-   return <section className="character-list">{characterCards}</section>;
+   return <List>{characterCards}</List>;
 }
