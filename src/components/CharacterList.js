@@ -549,7 +549,7 @@ export default function CharacterList(props) {
       }
    ];
 
-   const searchFilter = props.searchFilter || "";
+   const searchFilter = props.searchFilter || "rick";
    const page = props.page || 1;
 
    useEffect(() => {
@@ -572,7 +572,7 @@ export default function CharacterList(props) {
 
    console.log("filter", characters);
    const characterCards = tempData
-      .filter(character => character.name.includes(searchFilter))
+      .filter(character => character.name.toLowerCase().includes(searchFilter.toLowerCase()))
       .map(character => <CharacterCard character={character} />);
    console.log("filtered", characterCards);
 

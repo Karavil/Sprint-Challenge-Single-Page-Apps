@@ -1,12 +1,49 @@
 import React from "react";
+import styled from "styled-components";
+
+const Card = styled.div`
+   width: 40%;
+   padding: 20px 20px;
+   border-radius: 10px;
+
+   margin: 20px 0;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   transition: 0.3s;
+
+   text-align: center;
+
+   &:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+   }
+
+   h1 {
+      font-size: 2rem;
+      margin: 10px;
+   }
+
+   h2 {
+      font-size: 1rem;
+      margin: 5px;
+      color: darkgrey;
+   }
+`;
+
+const CharacterImg = styled.img`
+   border-radius: 50%;
+   border: 2px solid black;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+   width: 80%;
+`
 
 export default function CharacterCard({ character }) {
    return (
-      <div className="card">
-         <h1>Name: {character.name}</h1>
+      <Card>
+         <CharacterImg src={character.image} alt="Image of the rick and morty character"/>
+         <h1>{character.name}</h1>
          <h2>Species: {character.species}</h2>
          <h2>Home Planet: {character.origin.name}</h2>
-         <h3>Status: {character.status}</h3>
-      </div>
+         <h2 status={character.status}>Status: {character.status}</h2>
+      </Card>
    );
 }
