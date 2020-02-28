@@ -1,16 +1,35 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CharacterCard from "./CharacterCard";
 
-export default function CharacterList() {
-  // TODO: Add useState to track data from useEffect
+export default function CharacterList(props) {
+   const [characters, setCharacters] = useState([]);
+   const searchFilter = useState(props.searchFilter);
+   const page = useState(props.page);
 
-  useEffect(() => {
-    // TODO: Add API Request here - must run in `useEffect`
-    //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
-  }, []);
+   useEffect(() => {
+      axios
+         .get(`https://cors-anywhere.herokuapp.com/https://rickandmortyapi.com/api/character/?page=${page}`)
+         .then(function(response) {
+            // handle success
+            console.log(response);
+         })
+         .catch(function(error) {
+            // handle error
+            console.log(error);
+         })
+         .then(function() {
+            // always executed
+         });
+   }, [page]);
 
-  return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-    </section>
-  );
+   return (
+      <section className="character-list">
+         {characters.filter().map(character => {
+            return (
+               <CharacterCard character={character}/>
+            )
+         })}
+      </section>
+   );
 }
