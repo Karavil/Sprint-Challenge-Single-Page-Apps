@@ -30,9 +30,6 @@ export default function CharacterList(props) {
             // handle error
             console.log(error);
          })
-         .then(function() {
-            // always executed
-         });
    }, [page]);
 
    console.log(characters);
