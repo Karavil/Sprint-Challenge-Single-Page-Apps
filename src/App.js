@@ -17,7 +17,6 @@ export default function App() {
          </Route>
          <Route path="/characters">
             <SearchForm setSearchFilter={setSearchFilter} />
-
             <CharacterList searchFilter={searchFilter} />
          </Route>
       </main>

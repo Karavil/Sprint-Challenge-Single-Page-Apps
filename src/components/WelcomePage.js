@@ -7,6 +7,10 @@ const StyledWelcomePage = styled.section`
    flex-direction: column;
    align-items: center;
    justify-content: center;
+
+   img {
+      border-radius: 2px;
+   }
 `;
 
 const StyledButton = styled.button`
@@ -19,8 +23,10 @@ const StyledButton = styled.button`
    box-shadow: 5px 5px 10px;
    font-size: 1.2rem;
 
+   transition: 0.5s;
    &:hover {
       cursor: pointer;
+      background: grey;
    }
    
 `
